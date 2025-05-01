@@ -24,15 +24,15 @@ def extract_external_domains(domain, dmarc_record):
 
 def generate_verification_record(requesting_domain, external_domain):
     name = f"{requesting_domain}._report._dmarc.{external_domain}"
-    value = "v=DMARC1;"
+    value = "\"v=DMARC1;\""
     return name, value
 
 st.title("DMARC External Reporting DNS Generator")
 
-domain = st.text_input("Your Domain (e.g., dogmama.cz)")
+domain = st.text_input("Your Domain (e.g., mydomain.net)")
 dmarc_record = st.text_area("DMARC Record")
 
-if st.button("Generate DNS Records") and domain and dmarc_record:
+if st.button("Generate DNS Records for external validation") and domain and dmarc_record:
     ext_domains = extract_external_domains(domain.lower(), dmarc_record.strip())
     if not ext_domains:
         st.success("✅ No external domains found (excluding dmarcian). No DNS records needed.")
