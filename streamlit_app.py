@@ -24,7 +24,7 @@ def extract_external_domains(domain, dmarc_record):
 
 def generate_verification_record(requesting_domain, external_domain):
     name = f"{requesting_domain}._report._dmarc.{external_domain}"
-    value = "\"v=DMARC1;\""
+    value = "v=DMARC1;"
     return name, value
 
 st.title("DMARC External Reporting DNS Generator")
