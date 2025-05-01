@@ -1,19 +1,24 @@
-# 🎈 Blank app template
+# DMARC External DNS Record Generator 🛡️
 
-A simple Streamlit app template for you to modify!
+This tool helps you identify and generate the DNS TXT records needed to authorize external domains to receive DMARC aggregate (`rua`) and forensic (`ruf`) reports on your behalf.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+It is especially useful when you're using third-party DMARC monitoring services, and your DMARC record includes reporting addresses outside your main domain.
 
-### How to run it on your own machine
+## 🌐 Live App
 
-1. Install the requirements
+Try it here: [https://your-app-name.streamlit.app](https://your-app-name.streamlit.app)  
+*(replace with your actual Streamlit URL)*
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+## ✨ Features
 
-2. Run the app
+- Parses your DMARC record and extracts `rua`/`ruf` destinations
+- Ignores trusted DMARC processors like **dmarcian**
+- Identifies external domains requiring authorization
+- Generates the exact DNS TXT records to publish on external domains
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+## 🛠️ Usage
+
+1. Enter your **sending domain** (e.g. `example.com`)
+2. Paste your **DMARC record** (e.g. `v=DMARC1; p=none; rua=mailto:dmarc@example.net`)
+3. The tool will output one or more DNS TXT records like:
+
